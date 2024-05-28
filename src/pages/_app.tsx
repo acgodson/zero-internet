@@ -1,12 +1,16 @@
+import { GlobalProvider } from "@/contexts/globalContext";
 import "@/styles/globals.css";
+import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import { ToastContainer } from "react-toastify";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div>
-      <ToastContainer />
-      <Component {...pageProps} />
-    </div>
+    <ChakraProvider>
+      <GlobalProvider>
+        <ToastContainer />
+        <Component {...pageProps} />
+      </GlobalProvider>
+    </ChakraProvider>
   );
 }
